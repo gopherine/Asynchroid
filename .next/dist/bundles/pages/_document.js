@@ -81,7 +81,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_document__ = __webpack_require__("next/document");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_document___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_next_document__);
-var _jsxFileName = 'C:\\Projects\\React\\NextApp\\SpeechRecognition\\pages\\_document.js';
+var _jsxFileName = "/home/atharva/ReactSpeech/pages/_document.js";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -111,10 +111,10 @@ var MyDocument = function (_Document) {
   }
 
   _createClass(MyDocument, [{
-    key: 'render',
+    key: "render",
     value: function render() {
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'html',
+        "html",
         {
           __source: {
             fileName: _jsxFileName,
@@ -129,35 +129,63 @@ var MyDocument = function (_Document) {
               lineNumber: 13
             }
           },
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('link', {
-            rel: 'stylesheet',
-            href: '/_next/static/style.css',
-            __source: {
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("meta", { name: "viewport", content: "width=device-width, initial-scale=1.0", __source: {
               fileName: _jsxFileName,
               lineNumber: 14
+            }
+          }),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("link", {
+            rel: "stylesheet",
+            href: "/_next/static/style.css",
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 15
+            }
+          }),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("link", { rel: "stylesheet", href: "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css", integrity: "sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm", crossOrigin: "anonymous", __source: {
+              fileName: _jsxFileName,
+              lineNumber: 19
             }
           })
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          'body',
+          "body",
           {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 19
+              lineNumber: 21
             }
           },
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_next_document__["Main"], {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 20
+              lineNumber: 22
             }
           }),
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_next_document__["NextScript"], {
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 21
-            }
-          })
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            __WEBPACK_IMPORTED_MODULE_1_next_document__["NextScript"],
+            {
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 23
+              }
+            },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("script", { src: "https://code.jquery.com/jquery-3.2.1.slim.min.js", integrity: "sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN", crossorigin: "anonymous", __source: {
+                fileName: _jsxFileName,
+                lineNumber: 24
+              }
+            }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("script", { src: "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js", integrity: "sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q", crossorigin: "anonymous", __source: {
+                fileName: _jsxFileName,
+                lineNumber: 25
+              }
+            }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("script", { src: "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js", integrity: "sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl", crossorigin: "anonymous", __source: {
+                fileName: _jsxFileName,
+                lineNumber: 26
+              }
+            })
+          )
         )
       );
     }

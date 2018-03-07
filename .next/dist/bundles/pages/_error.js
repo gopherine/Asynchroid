@@ -72,18 +72,112 @@ module.exports =
 /************************************************************************/
 /******/ ({
 
+/***/ "./pages/_error.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("react");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_link__ = __webpack_require__("next/link");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_link___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_next_link__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__styles_style_scss__ = __webpack_require__("./styles/style.scss");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__styles_style_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__styles_style_scss__);
+var _jsxFileName = '/home/atharva/ReactSpeech/pages/_error.js';
+
+
+
+
+var errorPage = function errorPage() {
+    var errorClass = 'card ' + __WEBPACK_IMPORTED_MODULE_2__styles_style_scss___default.a.error;
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'div',
+        { className: errorClass, __source: {
+                fileName: _jsxFileName,
+                lineNumber: 8
+            }
+        },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'p',
+            { className: 'h1', __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 9
+                }
+            },
+            '404'
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'p',
+            { className: 'h2', __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 10
+                }
+            },
+            'Oops, something went wrong'
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'p',
+            { className: 'lead', __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 11
+                }
+            },
+            'Try ',
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                __WEBPACK_IMPORTED_MODULE_1_next_link___default.a,
+                { href: '/', __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 11
+                    }
+                },
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'a',
+                    {
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 11
+                        }
+                    },
+                    'going back'
+                )
+            ),
+            '.'
+        )
+    );
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (errorPage);
+
+/***/ }),
+
+/***/ "./styles/style.scss":
+/***/ (function(module, exports) {
+
+module.exports = {
+	"error": "_9SDG13c69iGDhOm1O6wJl"
+};
+
+/***/ }),
+
 /***/ 1:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__("C:\\Projects\\React\\NextApp\\SpeechRecognition\\node_modules\\next\\dist\\pages\\_error.js");
+module.exports = __webpack_require__("./pages/_error.js");
 
 
 /***/ }),
 
-/***/ "C:\\Projects\\React\\NextApp\\SpeechRecognition\\node_modules\\next\\dist\\pages\\_error.js":
+/***/ "next/link":
 /***/ (function(module, exports) {
 
-module.exports = require("C:\\Projects\\React\\NextApp\\SpeechRecognition\\node_modules\\next\\dist\\pages\\_error.js");
+module.exports = require("next/link");
+
+/***/ }),
+
+/***/ "react":
+/***/ (function(module, exports) {
+
+module.exports = require("react");
 
 /***/ })
 

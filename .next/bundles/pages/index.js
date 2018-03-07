@@ -4,53 +4,230 @@ module.exports =
           var comp = 
       webpackJsonp([4],{
 
-/***/ "./components/test.js":
+/***/ "./components/Navbar/Navbar.js":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(module) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__test_scss__ = __webpack_require__("./components/test.scss");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__test_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__test_scss__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__("./node_modules/react/cjs/react.development.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
-var _jsxFileName = "C:\\Projects\\React\\NextApp\\SpeechRecognition\\components\\test.js";
+/* WEBPACK VAR INJECTION */(function(module) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("./node_modules/react/cjs/react.development.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Navbar_scss__ = __webpack_require__("./components/Navbar/Navbar.scss");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Navbar_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Navbar_scss__);
+var _jsxFileName = '/home/atharva/ReactSpeech/components/Navbar/Navbar.js';
 
 (function () {
-    var enterModule = __webpack_require__("./node_modules/react-hot-loader/patch.js").enterModule;
+  var enterModule = __webpack_require__("./node_modules/react-hot-loader/patch.js").enterModule;
 
-    enterModule && enterModule(module);
+  enterModule && enterModule(module);
 })();
 
 
 
 
-var test = function test(props) {
-    return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-        "h2",
-        { className: __WEBPACK_IMPORTED_MODULE_0__test_scss___default.a.newFont, __source: {
-                fileName: _jsxFileName,
-                lineNumber: 5
-            }
+var Navbar = function Navbar(props) {
+  var navWrapperClass = 'navbar navbar-expand-lg navbar-dark bg-dark ' + __WEBPACK_IMPORTED_MODULE_1__Navbar_scss___default.a.navbar;
+  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+    'nav',
+    { className: navWrapperClass, __source: {
+        fileName: _jsxFileName,
+        lineNumber: 7
+      }
+    },
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      'a',
+      { className: 'navbar-brand', href: '#', __source: {
+          fileName: _jsxFileName,
+          lineNumber: 8
+        }
+      },
+      'Navbar'
+    ),
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      'button',
+      { className: 'navbar-toggler', type: 'button', 'data-toggle': 'collapse', 'data-target': '#navbarSupportedContent', 'aria-controls': 'navbarSupportedContent', 'aria-expanded': 'false', 'aria-label': 'Toggle navigation', __source: {
+          fileName: _jsxFileName,
+          lineNumber: 9
+        }
+      },
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('span', { className: 'navbar-toggler-icon', __source: {
+          fileName: _jsxFileName,
+          lineNumber: 10
+        }
+      })
+    ),
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      'div',
+      { className: 'collapse navbar-collapse', id: 'navbarSupportedContent', __source: {
+          fileName: _jsxFileName,
+          lineNumber: 13
+        }
+      },
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'ul',
+        { className: 'navbar-nav mr-auto', __source: {
+            fileName: _jsxFileName,
+            lineNumber: 14
+          }
         },
-        "Hello World"
-    );
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'li',
+          { className: 'nav-item active', __source: {
+              fileName: _jsxFileName,
+              lineNumber: 15
+            }
+          },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'a',
+            { className: 'nav-link', href: '#', __source: {
+                fileName: _jsxFileName,
+                lineNumber: 16
+              }
+            },
+            'Home ',
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'span',
+              { className: 'sr-only', __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 16
+                }
+              },
+              '(current)'
+            )
+          )
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'li',
+          { className: 'nav-item', __source: {
+              fileName: _jsxFileName,
+              lineNumber: 18
+            }
+          },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'a',
+            { className: 'nav-link', href: '#', __source: {
+                fileName: _jsxFileName,
+                lineNumber: 19
+              }
+            },
+            'Link'
+          )
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'li',
+          { className: 'nav-item dropdown', __source: {
+              fileName: _jsxFileName,
+              lineNumber: 21
+            }
+          },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'a',
+            { className: 'nav-link dropdown-toggle', href: '#', id: 'navbarDropdown', role: 'button', 'data-toggle': 'dropdown', 'aria-haspopup': 'true', 'aria-expanded': 'false', __source: {
+                fileName: _jsxFileName,
+                lineNumber: 22
+              }
+            },
+            'Dropdown'
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
+            { className: 'dropdown-menu', 'aria-labelledby': 'navbarDropdown', __source: {
+                fileName: _jsxFileName,
+                lineNumber: 25
+              }
+            },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'a',
+              { className: 'dropdown-item', href: '#', __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 26
+                }
+              },
+              'Action'
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'a',
+              { className: 'dropdown-item', href: '#', __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 27
+                }
+              },
+              'Another action'
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'dropdown-divider', __source: {
+                fileName: _jsxFileName,
+                lineNumber: 28
+              }
+            }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'a',
+              { className: 'dropdown-item', href: '#', __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 29
+                }
+              },
+              'Something else here'
+            )
+          )
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'li',
+          { className: 'nav-item', __source: {
+              fileName: _jsxFileName,
+              lineNumber: 32
+            }
+          },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'a',
+            { className: 'nav-link disabled', href: '#', __source: {
+                fileName: _jsxFileName,
+                lineNumber: 33
+              }
+            },
+            'Disabled'
+          )
+        )
+      ),
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'form',
+        { className: 'form-inline my-2 my-lg-0', __source: {
+            fileName: _jsxFileName,
+            lineNumber: 36
+          }
+        },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { className: 'form-control mr-sm-2', type: 'search', placeholder: 'Search', 'aria-label': 'Search', __source: {
+            fileName: _jsxFileName,
+            lineNumber: 37
+          }
+        }),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'button',
+          { className: 'btn btn-outline-success my-2 my-sm-0', type: 'submit', __source: {
+              fileName: _jsxFileName,
+              lineNumber: 38
+            }
+          },
+          'Search'
+        )
+      )
+    )
+  );
 };
 
-var _default = test;
+var _default = Navbar;
 /* harmony default export */ __webpack_exports__["a"] = (_default);
 ;
 
 (function () {
-    var reactHotLoader = __webpack_require__("./node_modules/react-hot-loader/patch.js").default;
+  var reactHotLoader = __webpack_require__("./node_modules/react-hot-loader/patch.js").default;
 
-    var leaveModule = __webpack_require__("./node_modules/react-hot-loader/patch.js").leaveModule;
+  var leaveModule = __webpack_require__("./node_modules/react-hot-loader/patch.js").leaveModule;
 
-    if (!reactHotLoader) {
-        return;
-    }
+  if (!reactHotLoader) {
+    return;
+  }
 
-    reactHotLoader.register(test, "test", "C:/Projects/React/NextApp/SpeechRecognition/components/test.js");
-    reactHotLoader.register(_default, "default", "C:/Projects/React/NextApp/SpeechRecognition/components/test.js");
-    leaveModule(module);
+  reactHotLoader.register(Navbar, 'Navbar', '/home/atharva/ReactSpeech/components/Navbar/Navbar.js');
+  reactHotLoader.register(_default, 'default', '/home/atharva/ReactSpeech/components/Navbar/Navbar.js');
+  leaveModule(module);
 })();
 
 ;
@@ -58,13 +235,13 @@ var _default = test;
 
 /***/ }),
 
-/***/ "./components/test.scss":
+/***/ "./components/Navbar/Navbar.scss":
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__("./node_modules/css-loader/index.js?{\"modules\":true,\"minimize\":false,\"sourceMap\":true,\"importLoaders\":1}!./node_modules/sass-loader/lib/loader.js!./components/test.scss");
+var content = __webpack_require__("./node_modules/css-loader/index.js?{\"modules\":true,\"minimize\":false,\"sourceMap\":true,\"importLoaders\":1}!./node_modules/sass-loader/lib/loader.js!./components/Navbar/Navbar.scss");
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -78,8 +255,8 @@ if(content.locals) module.exports = content.locals;
 if(true) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept("./node_modules/css-loader/index.js?{\"modules\":true,\"minimize\":false,\"sourceMap\":true,\"importLoaders\":1}!./node_modules/sass-loader/lib/loader.js!./components/test.scss", function() {
-			var newContent = __webpack_require__("./node_modules/css-loader/index.js?{\"modules\":true,\"minimize\":false,\"sourceMap\":true,\"importLoaders\":1}!./node_modules/sass-loader/lib/loader.js!./components/test.scss");
+		module.hot.accept("./node_modules/css-loader/index.js?{\"modules\":true,\"minimize\":false,\"sourceMap\":true,\"importLoaders\":1}!./node_modules/sass-loader/lib/loader.js!./components/Navbar/Navbar.scss", function() {
+			var newContent = __webpack_require__("./node_modules/css-loader/index.js?{\"modules\":true,\"minimize\":false,\"sourceMap\":true,\"importLoaders\":1}!./node_modules/sass-loader/lib/loader.js!./components/Navbar/Navbar.scss");
 			if(typeof newContent === 'string') newContent = [[module.i, newContent, '']];
 			update(newContent);
 		});
@@ -90,7 +267,7 @@ if(true) {
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js?{\"modules\":true,\"minimize\":false,\"sourceMap\":true,\"importLoaders\":1}!./node_modules/sass-loader/lib/loader.js!./components/test.scss":
+/***/ "./node_modules/css-loader/index.js?{\"modules\":true,\"minimize\":false,\"sourceMap\":true,\"importLoaders\":1}!./node_modules/sass-loader/lib/loader.js!./components/Navbar/Navbar.scss":
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/css-base.js")(true);
@@ -98,11 +275,11 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, ".ZUjhlz_9WVQv5no4eple1 {\n  color: red; }\n", "", {"version":3,"sources":["C:/Projects/React/NextApp/SpeechRecognition/components/test.scss"],"names":[],"mappings":"AAAA;EACE,WAAW,EAAE","file":"test.scss","sourcesContent":[".newFont {\n  color: red; }\n"],"sourceRoot":""}]);
+exports.push([module.i, "._2fWW2AxMbs71iqJlme-Fc6 {\n  -webkit-box-shadow: 0 8px 6px -6px #999;\n  -moz-box-shadow: 0 8px 6px -6px #999;\n  box-shadow: 0 8px 6px -6px #999;\n  /* the rest of your styling */ }\n", "", {"version":3,"sources":["/home/atharva/ReactSpeech/components/Navbar/Navbar.scss"],"names":[],"mappings":"AAAA;EACE,wCAAwC;EACxC,qCAAqC;EACrC,gCAAgC;EAChC,8BAA8B,EAAE","file":"Navbar.scss","sourcesContent":[".navbar {\n  -webkit-box-shadow: 0 8px 6px -6px #999;\n  -moz-box-shadow: 0 8px 6px -6px #999;\n  box-shadow: 0 8px 6px -6px #999;\n  /* the rest of your styling */ }\n"],"sourceRoot":""}]);
 
 // exports
 exports.locals = {
-	"newFont": "ZUjhlz_9WVQv5no4eple1"
+	"navbar": "_2fWW2AxMbs71iqJlme-Fc6"
 };
 
 /***/ }),
@@ -115,12 +292,11 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "._1FH3zoiFAWO9OxYHAbPKC- {\n  background-color: #2ecc71; }\n\n._3L-GaJWAVHpxirIuAVvvGC {\n  font-size: 100px; }\n", "", {"version":3,"sources":["C:/Projects/React/NextApp/SpeechRecognition/styles/style.scss"],"names":[],"mappings":"AAAA;EACE,0BAA0B,EAAE;;AAE9B;EACE,iBAAiB,EAAE","file":"style.scss","sourcesContent":[".example {\n  background-color: #2ecc71; }\n\n.font {\n  font-size: 100px; }\n"],"sourceRoot":""}]);
+exports.push([module.i, "._9SDG13c69iGDhOm1O6wJl {\n  text-align: center;\n  margin-top: 20vh;\n  margin-left: 20%;\n  margin-right: 20%;\n  padding-top: 3%;\n  height: 35vh; }\n", "", {"version":3,"sources":["/home/atharva/ReactSpeech/styles/style.scss"],"names":[],"mappings":"AAAA;EACE,mBAAmB;EACnB,iBAAiB;EACjB,iBAAiB;EACjB,kBAAkB;EAClB,gBAAgB;EAChB,aAAa,EAAE","file":"style.scss","sourcesContent":[".error {\n  text-align: center;\n  margin-top: 20vh;\n  margin-left: 20%;\n  margin-right: 20%;\n  padding-top: 3%;\n  height: 35vh; }\n"],"sourceRoot":""}]);
 
 // exports
 exports.locals = {
-	"example": "_1FH3zoiFAWO9OxYHAbPKC-",
-	"font": "_3L-GaJWAVHpxirIuAVvvGC"
+	"error": "_9SDG13c69iGDhOm1O6wJl"
 };
 
 /***/ }),
@@ -2223,63 +2399,61 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__styles_style_scss__ = __webpack_require__("./styles/style.scss");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__styles_style_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__styles_style_scss__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_test__ = __webpack_require__("./components/test.js");
-var _jsxFileName = 'C:\\Projects\\React\\NextApp\\SpeechRecognition\\pages\\index.js';
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_Navbar_Navbar__ = __webpack_require__("./components/Navbar/Navbar.js");
+var _jsxFileName = '/home/atharva/ReactSpeech/pages/index.js';
 
 
 (function () {
-  var enterModule = __webpack_require__("./node_modules/react-hot-loader/patch.js").enterModule;
+   var enterModule = __webpack_require__("./node_modules/react-hot-loader/patch.js").enterModule;
 
-  enterModule && enterModule(module);
+   enterModule && enterModule(module);
 })();
 
 
 
 
-var classhere = __WEBPACK_IMPORTED_MODULE_1__styles_style_scss___default.a.example + ' ' + __WEBPACK_IMPORTED_MODULE_1__styles_style_scss___default.a.font;
-
-var _default = function _default() {
-  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-    'div',
-    {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 6
-      }
-    },
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+var indexPage = function indexPage() {
+   return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       'div',
-      { className: classhere, __source: {
-          fileName: _jsxFileName,
-          lineNumber: 7
-        }
+      {
+         __source: {
+            fileName: _jsxFileName,
+            lineNumber: 5
+         }
       },
-      'Hello World!'
-    ),
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_test__["a" /* default */], {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 10
-      }
-    })
-  );
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+         'div',
+         {
+            __source: {
+               fileName: _jsxFileName,
+               lineNumber: 6
+            }
+         },
+         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_Navbar_Navbar__["a" /* default */], {
+            __source: {
+               fileName: _jsxFileName,
+               lineNumber: 7
+            }
+         })
+      )
+   );
 };
-
+var _default = indexPage;
 /* harmony default export */ __webpack_exports__["default"] = (_default);
 ;
 
 (function () {
-  var reactHotLoader = __webpack_require__("./node_modules/react-hot-loader/patch.js").default;
+   var reactHotLoader = __webpack_require__("./node_modules/react-hot-loader/patch.js").default;
 
-  var leaveModule = __webpack_require__("./node_modules/react-hot-loader/patch.js").leaveModule;
+   var leaveModule = __webpack_require__("./node_modules/react-hot-loader/patch.js").leaveModule;
 
-  if (!reactHotLoader) {
-    return;
-  }
+   if (!reactHotLoader) {
+      return;
+   }
 
-  reactHotLoader.register(classhere, 'classhere', 'C:/Projects/React/NextApp/SpeechRecognition/pages/index.js');
-  reactHotLoader.register(_default, 'default', 'C:/Projects/React/NextApp/SpeechRecognition/pages/index.js');
-  leaveModule(module);
+   reactHotLoader.register(indexPage, 'indexPage', '/home/atharva/ReactSpeech/pages/index.js');
+   reactHotLoader.register(_default, 'default', '/home/atharva/ReactSpeech/pages/index.js');
+   leaveModule(module);
 })();
 
 ;

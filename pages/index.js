@@ -1,11 +1,11 @@
 import classes from '../styles/style.scss'
-import NEW from '../components/test';
+import Navbar from '../components/Navbar/Navbar';
 
-const classhere=`${classes.example} ${classes.font}`
-export default () =>
+const indexPage=()=>(
 <div>
-  <div className={classhere}>
-    Hello World!
-  </div>
-  <NEW/>
-  </div>
+    <div>
+       <Navbar/>
+    </div>
+</div>
+);
+export default indexPage;
