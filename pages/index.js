@@ -1,20 +1,11 @@
-import React from 'react';
-import Link from 'next/link';
-import MainNav from '../components/Navbars/MainNav';
-import Head from 'next/head';
-import FaAdjust from 'react-icons/lib/fa/adjust';
+import classes from '../styles/style.scss'
+import NEW from '../components/test';
 
-
-const indexPage=()=>(
+const classhere=`${classes.example} ${classes.font}`
+export default () =>
 <div>
-    <Head>
-      <title>Speech Blog</title>
-      <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-    </Head>
-    <MainNav/>
-    <FaAdjust/>
-    <p>Go to <Link href="/auth"><a>Auth</a></Link> </p>
-</div>
-);
-
-export default indexPage;
+  <div className={classhere}>
+    Hello World!
+  </div>
+  <NEW/>
+  </div>

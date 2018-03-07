@@ -67,98 +67,23 @@ module.exports =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./pages/_error.js":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("react");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_link__ = __webpack_require__("next/link");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_link___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_next_link__);
-var _jsxFileName = '/home/atharva/ReactSpeech/pages/_error.js';
-
-
-
-var error = function error() {
-    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'div',
-        {
-            __source: {
-                fileName: _jsxFileName,
-                lineNumber: 5
-            }
-        },
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'h1',
-            {
-                __source: {
-                    fileName: _jsxFileName,
-                    lineNumber: 6
-                }
-            },
-            ' Oops! something went wrong.'
-        ),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'p',
-            {
-                __source: {
-                    fileName: _jsxFileName,
-                    lineNumber: 7
-                }
-            },
-            'Try',
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                __WEBPACK_IMPORTED_MODULE_1_next_link___default.a,
-                { href: '/', __source: {
-                        fileName: _jsxFileName,
-                        lineNumber: 7
-                    }
-                },
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'a',
-                    {
-                        __source: {
-                            fileName: _jsxFileName,
-                            lineNumber: 7
-                        }
-                    },
-                    'going back'
-                )
-            ),
-            ' '
-        )
-    );
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (error);
-
-/***/ }),
-
-/***/ 0:
+/***/ 1:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__("./pages/_error.js");
+module.exports = __webpack_require__("C:\\Projects\\React\\NextApp\\SpeechRecognition\\node_modules\\next\\dist\\pages\\_error.js");
 
 
 /***/ }),
 
-/***/ "next/link":
+/***/ "C:\\Projects\\React\\NextApp\\SpeechRecognition\\node_modules\\next\\dist\\pages\\_error.js":
 /***/ (function(module, exports) {
 
-module.exports = require("next/link");
-
-/***/ }),
-
-/***/ "react":
-/***/ (function(module, exports) {
-
-module.exports = require("react");
+module.exports = require("C:\\Projects\\React\\NextApp\\SpeechRecognition\\node_modules\\next\\dist\\pages\\_error.js");
 
 /***/ })
 

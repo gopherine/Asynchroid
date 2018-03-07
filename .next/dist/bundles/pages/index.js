@@ -72,29 +72,40 @@ module.exports =
 /************************************************************************/
 /******/ ({
 
-/***/ "./components/Navbars/MainNav.js":
+/***/ "./components/test.js":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("react");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-var _jsxFileName = '/home/atharva/ReactSpeech/components/Navbars/MainNav.js';
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__test_scss__ = __webpack_require__("./components/test.scss");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__test_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__test_scss__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__("react");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
+var _jsxFileName = "C:\\Projects\\React\\NextApp\\SpeechRecognition\\components\\test.js";
 
 
-function MainNav(props) {
-  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-    'div',
-    {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 6
-      }
-    },
-    'I am navbar'
-  );
-}
 
-/* harmony default export */ __webpack_exports__["a"] = (MainNav);
+var test = function test(props) {
+    return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+        "h2",
+        { className: __WEBPACK_IMPORTED_MODULE_0__test_scss___default.a.newFont, __source: {
+                fileName: _jsxFileName,
+                lineNumber: 5
+            }
+        },
+        "Hello World"
+    );
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (test);
+
+/***/ }),
+
+/***/ "./components/test.scss":
+/***/ (function(module, exports) {
+
+module.exports = {
+	"newFont": "ZUjhlz_9WVQv5no4eple1"
+};
 
 /***/ }),
 
@@ -105,98 +116,51 @@ function MainNav(props) {
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("react");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_link__ = __webpack_require__("next/link");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_link___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_next_link__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_Navbars_MainNav__ = __webpack_require__("./components/Navbars/MainNav.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_next_head__ = __webpack_require__("next/head");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_next_head___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_next_head__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_icons_lib_fa_adjust__ = __webpack_require__("react-icons/lib/fa/adjust");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_icons_lib_fa_adjust___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_react_icons_lib_fa_adjust__);
-var _jsxFileName = '/home/atharva/ReactSpeech/pages/index.js';
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__styles_style_scss__ = __webpack_require__("./styles/style.scss");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__styles_style_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__styles_style_scss__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_test__ = __webpack_require__("./components/test.js");
+var _jsxFileName = 'C:\\Projects\\React\\NextApp\\SpeechRecognition\\pages\\index.js';
 
 
 
 
-
-
-var indexPage = function indexPage() {
+var classhere = __WEBPACK_IMPORTED_MODULE_1__styles_style_scss___default.a.example + ' ' + __WEBPACK_IMPORTED_MODULE_1__styles_style_scss___default.a.font;
+/* harmony default export */ __webpack_exports__["default"] = (function () {
   return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
     'div',
     {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 9
+        lineNumber: 6
       }
     },
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      __WEBPACK_IMPORTED_MODULE_3_next_head___default.a,
-      {
-        __source: {
+      'div',
+      { className: classhere, __source: {
           fileName: _jsxFileName,
-          lineNumber: 10
+          lineNumber: 7
         }
       },
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'title',
-        {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 11
-          }
-        },
-        'Speech Blog'
-      ),
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('meta', { name: 'viewport', content: 'initial-scale=1.0, width=device-width', __source: {
-          fileName: _jsxFileName,
-          lineNumber: 12
-        }
-      })
+      'Hello World!'
     ),
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_Navbars_MainNav__["a" /* default */], {
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_test__["a" /* default */], {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 14
+        lineNumber: 10
       }
-    }),
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_react_icons_lib_fa_adjust___default.a, {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 15
-      }
-    }),
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      'p',
-      {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 16
-        }
-      },
-      'Go to ',
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        __WEBPACK_IMPORTED_MODULE_1_next_link___default.a,
-        { href: '/auth', __source: {
-            fileName: _jsxFileName,
-            lineNumber: 16
-          }
-        },
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          'a',
-          {
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 16
-            }
-          },
-          'Auth'
-        )
-      ),
-      ' '
-    )
+    })
   );
-};
+});
 
-/* harmony default export */ __webpack_exports__["default"] = (indexPage);
+/***/ }),
+
+/***/ "./styles/style.scss":
+/***/ (function(module, exports) {
+
+module.exports = {
+	"example": "_1FH3zoiFAWO9OxYHAbPKC-",
+	"font": "_3L-GaJWAVHpxirIuAVvvGC"
+};
 
 /***/ }),
 
@@ -208,31 +172,10 @@ module.exports = __webpack_require__("./pages/index.js");
 
 /***/ }),
 
-/***/ "next/head":
-/***/ (function(module, exports) {
-
-module.exports = require("next/head");
-
-/***/ }),
-
-/***/ "next/link":
-/***/ (function(module, exports) {
-
-module.exports = require("next/link");
-
-/***/ }),
-
 /***/ "react":
 /***/ (function(module, exports) {
 
 module.exports = require("react");
-
-/***/ }),
-
-/***/ "react-icons/lib/fa/adjust":
-/***/ (function(module, exports) {
-
-module.exports = require("react-icons/lib/fa/adjust");
 
 /***/ })
 
