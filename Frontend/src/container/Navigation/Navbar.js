@@ -116,7 +116,7 @@ class Navbar extends React.Component {
               <MenuIcon />
             </IconButton>
             <Typography variant="title" color="inherit" noWrap>
-                <span className="brand">Asyncronal</span>
+                <span className="brand">Asynchroid</span>
             </Typography>
           </Toolbar>
         </AppBar>
