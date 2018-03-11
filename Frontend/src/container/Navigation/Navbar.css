@@ -1,6 +1,8 @@
 .brand{
+    display: inline;
     font-family: 'Megrim', cursive;
     font-weight: bolder;
+    font-size: 20px;
     color: #e0dfdc;
 }
 

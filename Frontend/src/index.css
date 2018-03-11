@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Megrim|Raleway');
+@import url('https://fonts.googleapis.com/css?family=Megrim|Open+Sans|Raleway');
 
 body {
   margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+  padding-left: 80px;
+  font-family: 'Raleway', sans-serif;
 }
