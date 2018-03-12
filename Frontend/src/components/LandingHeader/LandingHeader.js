@@ -9,12 +9,11 @@ import GoCircuitBoard from 'react-icons/lib/go/circuit-board';
 import FaBook from 'react-icons/lib/fa/book';
 import FaVideoCamera from 'react-icons/lib/fa/video-camera';
 import MdChat from 'react-icons/lib/md/chat';
-import Footer from '../shared/Footer';
 import { Container, Row, Col } from 'reactstrap';
 
 const LandingHeader= (props) =>{
     return(
-        <div>
+        <div style={{marginBottom:100}}>
             <div className="header">
                 <div className="info">
                     <h1 style={{  fontFamily: "'Megrim', cursive",fontSize:"400%",color:"#333333"}}>ASYNCHROID</h1>
@@ -87,7 +86,6 @@ const LandingHeader= (props) =>{
                     </Container>
                     </div>
              </section>
-            <Footer/>
         </div>
     )
 }

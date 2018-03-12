@@ -18,9 +18,10 @@ import { Switch, Route } from 'react-router-dom';
 import LandingPage from '../LandingPage/LandingPage';
 import Auth from '../Auth/Auth';
 import ErrorPage from '../../_error';
+import Footer from '../../components/shared/Footer';
 
 const drawerWidth = 240;
-
+const marginLeft=-24;
 const styles = theme => ({
   root: {
     flexGrow: 1,
@@ -29,17 +30,17 @@ const styles = theme => ({
     overflow: 'hidden',
     position: 'relative',
     display: 'flex',
-    marginLeft:-8
+    marginLeft:marginLeft,
   },
   
   drawerPaper: {
-    position: 'fixed',
-    width: drawerWidth,
-    backgroundColor:'#212121',
-    transition: theme.transitions.create('width', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
+      position: 'fixed',
+      width: drawerWidth,
+      backgroundColor:'#212121',
+      transition: theme.transitions.create('width', {
+        easing: theme.transitions.easing.sharp,
+        duration: theme.transitions.duration.enteringScreen,
+      }),
   },
   drawerPaperClose: {
     overflowX: 'hidden',
@@ -56,7 +57,7 @@ const styles = theme => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'flex-end',
-    padding: '0 12px',
+    padding: '0 1.2vw',
     ...theme.mixins.toolbar,
   },
   content: {
@@ -110,10 +111,11 @@ class Navbar extends React.Component {
         <main className={classes.content}>
           <Switch>
             <Route exact path="/" component={LandingPage}/>
-            <Route exact path="/Auth" component={Auth}/>
+            <Route exact path="/auth" component={Auth}/>
             <Route component={ErrorPage}/>
           </Switch>
         </main>
+        <Footer/>
       </div>
     );
   }

@@ -1,4 +1,8 @@
 
   .foot{
-      text-align: center;
+    position: absolute; 
+    margin-left:35%;
+    margin-right:34%;
+    font-size: 2vh;
+    bottom:0;
   }

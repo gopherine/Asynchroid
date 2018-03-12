@@ -1,8 +1,9 @@
 import React,{Component} from 'react';
+import Authentication from '../../components/Authentication/Authentication';
 
 class Auth extends Component{
     render(){
-        return <h1>Hello World</h1>
+        return <Authentication/>
     }
 }
 
