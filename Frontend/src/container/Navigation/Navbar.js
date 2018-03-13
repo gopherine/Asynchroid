@@ -28,8 +28,8 @@ const styles = theme => ({
     height: "100%",
     zIndex: 1,
     overflow: 'hidden',
-    position: 'relative',
-    display: 'flex',
+    position: 'ansolute',
+    display: 'block',
     marginLeft:marginLeft,
   },
   
@@ -37,6 +37,7 @@ const styles = theme => ({
       position: 'fixed',
       width: drawerWidth,
       backgroundColor:'#212121',
+      overflow: 'hidden',
       transition: theme.transitions.create('width', {
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.enteringScreen,

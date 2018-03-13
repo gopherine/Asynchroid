@@ -17,6 +17,17 @@
       font-family: 'Raleway', sans-serif; 
   }
 
+
+  @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    .loginContainer{
+        width:100%;
+        margin-left:0%;
+        margin-top:0;
+        padding-bottom:30px; 
+        font-family: 'Raleway', sans-serif; 
+    }
+  }
+
   .loginContainer .h1{
       font-size: 5vw;
       text-align: center;
