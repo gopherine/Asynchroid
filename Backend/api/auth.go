@@ -1,7 +1,6 @@
 package api
 
 import (
-	"Asynchroid/Backend/postgres"
 	"fmt"
 	"net/http"
 
@@ -10,8 +9,7 @@ import (
 
 //Index helper
 func Index(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
-	output := postgres.AuthSearch()
-	fmt.Fprint(w, "Welcome!\n"+output)
+	fmt.Fprint(w, "Welcome!\n")
 }
 
 //Hello helper
