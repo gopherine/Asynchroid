@@ -1,13 +1,18 @@
-package main
+package buisnesslogic
 
 import (
+	"crypto/sha512"
+	"encoding/base64"
 	"fmt"
 	"log"
+	"math/rand"
+	"time"
 
 	"golang.org/x/crypto/bcrypt"
 )
 
-func hashAndSalt(pwd []byte) string {
+//HashAndSalt bcrypt hashing and salting
+func HashAndSalt(pwd []byte) string {
 
 	// Use GenerateFromPassword to hash & salt pwd.
 	// MinCost is just an integer constant provided by the bcrypt
@@ -23,7 +28,8 @@ func hashAndSalt(pwd []byte) string {
 	return string(hash)
 }
 
-func getPwd() []byte {
+//GetPwd for troubleshooting
+func GetPwd() []byte {
 	// Prompt the user to enter a password
 	fmt.Println("Enter a password")
 	// Variable to store the users input
@@ -38,7 +44,8 @@ func getPwd() []byte {
 	return []byte(pwd)
 }
 
-func comparePasswords(hashedPwd string, plainPwd []byte) bool {
+//ComparePasswords compares password returns boolean
+func ComparePasswords(hashedPwd string, plainPwd []byte) bool {
 	// Since we'll be getting the hashed password from the DB it
 	// will be a string so we'll need to convert it to a byte slice
 	byteHash := []byte(hashedPwd)
@@ -51,13 +58,36 @@ func comparePasswords(hashedPwd string, plainPwd []byte) bool {
 	return true
 }
 
-func main() {
-	pwd := getPwd()
-	hash := hashAndSalt(pwd)
+// RandomInt Returns an int >= min, < max
+func RandomInt(min, max int) int {
+	return min + rand.Intn(max-min)
+}
 
-	// Enter the same password again and compare it with the
-	// first password entered
-	pwd2 := getPwd()
-	pwdMatch := comparePasswords(hash, pwd2)
-	fmt.Println("Passwords Match?", pwdMatch)
+// GetPwdResetToken Generate a random string of A-Z chars with len = l
+func GetPwdResetToken(len int) string {
+	bytes := make([]byte, len)
+	for i := 0; i < len; i++ {
+		bytes[i] = byte(RandomInt(65, 90))
+	}
+	sha512 := sha512.New()
+	sha512.Write(bytes)
+	return base64.URLEncoding.EncodeToString(sha512.Sum(nil))
+}
+
+//GenerateUTCTime returns UTC time
+func GenerateUTCTime() string {
+	return time.Now().UTC().String()
+}
+
+func junk() {
+	// pwd := getPwd()
+	// hash := hashAndSalt(pwd)
+
+	// // Enter the same password again and compare it with the
+	// // first password entered
+	// pwd2 := getPwd()
+	// pwdMatch := comparePasswords(hash, pwd2)
+	// fmt.Println("Passwords Match?", pwdMatch)
+	// fmt.Printf(getPwdResetToken(256))
+	//fmt.Printf(" %s\n", time.Now().UTC().String())
 }

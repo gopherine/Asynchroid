@@ -1,11 +1,11 @@
 package controllers
 
 import (
+	"Asynchroid/Backend/buisnesslogic"
+	"Asynchroid/Backend/models"
 	"encoding/json"
 	"fmt"
 	"net/http"
-
-	"Asynchroid/Backend/models"
 
 	"github.com/julienschmidt/httprouter"
 	mgo "gopkg.in/mgo.v2"
@@ -40,10 +40,10 @@ func (uc UserController) GetUser(w http.ResponseWriter, r *http.Request, p httpr
 	oid := bson.ObjectIdHex(id)
 
 	// Stub user
-	u := models.User{}
+	u := models.UserAuth{}
 
 	// Fetch user
-	if err := uc.session.DB("asynchroid").C("users").FindId(oid).One(&u); err != nil {
+	if err := uc.session.DB("asynchroid").C("userdetails").FindId(oid).One(&u); err != nil {
 		w.WriteHeader(404)
 		return
 	}
@@ -61,16 +61,17 @@ func (uc UserController) GetUser(w http.ResponseWriter, r *http.Request, p httpr
 // CreateUser creates a new user resource
 func (uc UserController) CreateUser(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
 	// Stub an user to be populated from the body
-	u := models.User{}
+	u := models.UserAuth{}
 
 	// Populate the user data
 	json.NewDecoder(r.Body).Decode(&u)
 
-	// Add an Id
+	// processing data enetered by the user
 	u.ID = bson.NewObjectId()
-
+	u.Password = buisnesslogic.HashAndSalt([]byte(u.Password))
+	u.RegistrationTime = buisnesslogic.GenerateUTCTime()
 	// Write the user to mongo
-	uc.session.DB("asynchroid").C("users").Insert(u)
+	uc.session.DB("asynchroid").C("userdetails").Insert(u)
 
 	// Marshal provided interface into JSON structure
 	uj, _ := json.Marshal(u)
@@ -97,7 +98,7 @@ func (uc UserController) RemoveUser(w http.ResponseWriter, r *http.Request, p ht
 	oid := bson.ObjectIdHex(id)
 
 	// Remove user
-	if err := uc.session.DB("asynchroid").C("users").RemoveId(oid); err != nil {
+	if err := uc.session.DB("asynchroid").C("userdetails").RemoveId(oid); err != nil {
 		w.WriteHeader(404)
 		return
 	}
