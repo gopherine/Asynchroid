@@ -43,7 +43,7 @@ func (uc UserController) GetUser(w http.ResponseWriter, r *http.Request, p httpr
 	u := models.User{}
 
 	// Fetch user
-	if err := uc.session.DB("go_rest_tutorial").C("users").FindId(oid).One(&u); err != nil {
+	if err := uc.session.DB("asynchroid").C("users").FindId(oid).One(&u); err != nil {
 		w.WriteHeader(404)
 		return
 	}
@@ -70,7 +70,7 @@ func (uc UserController) CreateUser(w http.ResponseWriter, r *http.Request, p ht
 	u.ID = bson.NewObjectId()
 
 	// Write the user to mongo
-	uc.session.DB("go_rest_tutorial").C("users").Insert(u)
+	uc.session.DB("asynchroid").C("users").Insert(u)
 
 	// Marshal provided interface into JSON structure
 	uj, _ := json.Marshal(u)
@@ -97,7 +97,7 @@ func (uc UserController) RemoveUser(w http.ResponseWriter, r *http.Request, p ht
 	oid := bson.ObjectIdHex(id)
 
 	// Remove user
-	if err := uc.session.DB("go_rest_tutorial").C("users").RemoveId(oid); err != nil {
+	if err := uc.session.DB("asynchroid").C("users").RemoveId(oid); err != nil {
 		w.WriteHeader(404)
 		return
 	}
