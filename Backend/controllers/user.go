@@ -29,21 +29,13 @@ func NewUserController(s *mgo.Session) *UserController {
 func (uc UserController) GetUser(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
 	// Grab id
 	id := p.ByName("id")
-
-	// Verify id is ObjectId, otherwise bail
-	if !bson.IsObjectIdHex(id) {
-		w.WriteHeader(404)
-		return
-	}
-
-	// Grab id
-	oid := bson.ObjectIdHex(id)
-
+	fmt.Fprintf(w, id)
 	// Stub user
-	u := models.UserAuth{}
+	u := models.UserAuthSuccess{}
 
 	// Fetch user
-	if err := uc.session.DB("asynchroid").C("userdetails").FindId(oid).One(&u); err != nil {
+	query := bson.M{"username": id}
+	if err := uc.session.DB("asynchroid").C("userdetails").Find(query).One(&u); err != nil {
 		w.WriteHeader(404)
 		return
 	}
@@ -71,7 +63,16 @@ func (uc UserController) CreateUser(w http.ResponseWriter, r *http.Request, p ht
 	u.Password = buisnesslogic.HashAndSalt([]byte(u.Password))
 	u.RegistrationTime = buisnesslogic.GenerateUTCTime()
 	// Write the user to mongo
-	uc.session.DB("asynchroid").C("userdetails").Insert(u)
+	err := uc.session.DB("asynchroid").C("userdetails").Insert(u)
+	if err != nil {
+		if mgo.IsDup(err) {
+			fmt.Fprintln(w, "Username or Email Already Exists")
+			return
+		}
+		// Is another error
+		fmt.Fprintln(w, "Unknown Error")
+		return
+	}
 
 	// Marshal provided interface into JSON structure
 	uj, _ := json.Marshal(u)
@@ -83,26 +84,38 @@ func (uc UserController) CreateUser(w http.ResponseWriter, r *http.Request, p ht
 }
 
 // RemoveUser removes an existing user resource
-// RemoveUser removes an existing user resource
 func (uc UserController) RemoveUser(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
 	// Grab id
 	id := p.ByName("id")
 
-	// Verify id is ObjectId, otherwise bail
-	if !bson.IsObjectIdHex(id) {
-		w.WriteHeader(404)
-		return
-	}
-
-	// Grab id
-	oid := bson.ObjectIdHex(id)
-
 	// Remove user
-	if err := uc.session.DB("asynchroid").C("userdetails").RemoveId(oid); err != nil {
+	query := bson.M{"username": id}
+	if err := uc.session.DB("asynchroid").C("userdetails").Remove(query); err != nil {
 		w.WriteHeader(404)
 		return
 	}
 
 	// Write status
 	w.WriteHeader(200)
+	fmt.Fprintf(w, "Removed User")
+}
+
+//UpdateUser updates userdetails collection
+func (uc UserController) UpdateUser(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
+	newPwd := r.URL.Query().Get("newPwd")
+	oldPwd := r.URL.Query().Get("oldPwd")
+	username := r.URL.Query().Get("username")
+	query := bson.M{"username": username}
+	u := models.UserPwdReset{}
+	if err := uc.session.DB("asynchroid").C("userdetails").Find(query).One(&u); err != nil {
+		w.WriteHeader(404)
+		return
+	}
+	if buisnesslogic.ComparePasswords(u.Password, []byte(oldPwd)) {
+		fmt.Print("Matched")
+	}
+
+	fmt.Fprintf(w, newPwd)
+	fmt.Fprintf(w, oldPwd)
+	//fmt.Fprintf(w, "%s", uj)
 }

@@ -37,6 +37,8 @@ func main() {
 
 	r.DELETE("/user/:id", uc.RemoveUser)
 
+	r.PUT("/user", uc.UpdateUser)
+
 	// Fire up the server
 	http.ListenAndServe("localhost:8000", r)
 }
