@@ -3,9 +3,11 @@ package controllers
 import (
 	"Asynchroid/Backend/buisnesslogic"
 	"Asynchroid/Backend/models"
+	"Asynchroid/Backend/utilities"
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"time"
 
 	"github.com/julienschmidt/httprouter"
 	mgo "gopkg.in/mgo.v2"
@@ -62,6 +64,7 @@ func (uc UserController) CreateUser(w http.ResponseWriter, r *http.Request, p ht
 	u.ID = bson.NewObjectId()
 	u.Password = buisnesslogic.HashAndSalt([]byte(u.Password))
 	u.RegistrationTime = buisnesslogic.GenerateUTCTime()
+	u.UserAccountStatus = "invalid"
 	// Write the user to mongo
 	err := uc.session.DB("asynchroid").C("userdetails").Insert(u)
 	if err != nil {
@@ -100,22 +103,86 @@ func (uc UserController) RemoveUser(w http.ResponseWriter, r *http.Request, p ht
 	fmt.Fprintf(w, "Removed User")
 }
 
-//UpdateUser updates userdetails collection
-func (uc UserController) UpdateUser(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
+//UpdateUserPassword updates userdetails collection
+func (uc UserController) UpdateUserPassword(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
 	newPwd := r.URL.Query().Get("newPwd")
 	oldPwd := r.URL.Query().Get("oldPwd")
 	username := r.URL.Query().Get("username")
 	query := bson.M{"username": username}
+	set := bson.M{"$set": bson.M{"password": buisnesslogic.HashAndSalt([]byte(newPwd))}}
 	u := models.UserPwdReset{}
 	if err := uc.session.DB("asynchroid").C("userdetails").Find(query).One(&u); err != nil {
 		w.WriteHeader(404)
 		return
 	}
 	if buisnesslogic.ComparePasswords(u.Password, []byte(oldPwd)) {
-		fmt.Print("Matched")
+		if err := uc.session.DB("asynchroid").C("userdetails").Update(query, set); err != nil {
+			w.WriteHeader(404)
+			return
+		}
+	} else {
+		fmt.Fprintf(w, "Invalid Password")
 	}
 
 	fmt.Fprintf(w, newPwd)
 	fmt.Fprintf(w, oldPwd)
 	//fmt.Fprintf(w, "%s", uj)
+}
+
+//ForgetUserPasswordToken generates password token if someone forget their password
+func (uc UserController) ForgetUserPasswordToken(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
+	id := p.ByName("id")
+	u := models.UserAuthSuccess{}
+	s := models.AsynchroidMailData{}
+	query := bson.M{"username": id}
+	if err := uc.session.DB("asynchroid").C("userdetails").Find(query).One(&u); err != nil {
+		w.WriteHeader(404)
+		return
+	}
+
+	if err := uc.session.DB("asynchroid").C("asynchroidmail").Find(bson.M{}).One(&s); err != nil {
+		w.WriteHeader(404)
+		return
+	}
+
+	updatequery := bson.M{"username": u.UserName}
+
+	expireTime := time.Now().UTC().Add(time.Minute * time.Duration(15)).String()
+	expireToken := buisnesslogic.GetPwdResetToken(20)
+	set := bson.M{"$set": bson.M{"pwdresettoken": expireToken, "pwdresetexpire": expireTime}}
+	if err := uc.session.DB("asynchroid").C("userdetails").Update(updatequery, set); err != nil {
+		w.WriteHeader(404)
+		return
+	}
+
+	URL := "http://localhost/password/reset/token?token=" + expireToken + "&username=" + u.UserName
+	utilities.SendMail(s.SenderEmail, []string{u.Email}, "Password Reset Confirmation", u.UserName, URL, "../Backend/utilities/ResetPassword.html")
+	fmt.Fprintf(w, u.UserName)
+	fmt.Fprintf(w, u.Email)
+}
+
+//ConfirmPasswordResetToken confirms password reset token
+func (uc UserController) ConfirmPasswordResetToken(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
+	u := models.UserAuth{}
+	username := r.URL.Query().Get("username")
+	token := r.URL.Query().Get("token")
+
+	query := bson.M{"username": username}
+	if err := uc.session.DB("asynchroid").C("userdetails").Find(query).One(&u); err != nil {
+		w.WriteHeader(404)
+		return
+	}
+	if u.PwdResetToken == token {
+		layout := "2006-01-02 15:04:05 -0700 MST"
+		currentTime := time.Now().UTC()
+		time, _ := time.Parse(layout, u.PwdResetExpire)
+
+		diff := time.Sub(currentTime)
+		if diff > 0 {
+			uj, _ := json.Marshal(u)
+			fmt.Fprintf(w, "%s", uj)
+		} else {
+			fmt.Fprintf(w, "expired")
+		}
+	}
 }

@@ -78,16 +78,3 @@ func GetPwdResetToken(len int) string {
 func GenerateUTCTime() string {
 	return time.Now().UTC().String()
 }
-
-func junk() {
-	// pwd := getPwd()
-	// hash := hashAndSalt(pwd)
-
-	// // Enter the same password again and compare it with the
-	// // first password entered
-	// pwd2 := getPwd()
-	// pwdMatch := comparePasswords(hash, pwd2)
-	// fmt.Println("Passwords Match?", pwdMatch)
-	// fmt.Printf(getPwdResetToken(256))
-	//fmt.Printf(" %s\n", time.Now().UTC().String())
-}

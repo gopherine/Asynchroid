@@ -37,7 +37,11 @@ func main() {
 
 	r.DELETE("/user/:id", uc.RemoveUser)
 
-	r.PUT("/user", uc.UpdateUser)
+	r.PUT("/password/reset", uc.UpdateUserPassword)
+
+	r.GET("/password/forget/:id", uc.ForgetUserPasswordToken)
+
+	r.GET("/confirm/reset/token", uc.ConfirmPasswordResetToken)
 
 	// Fire up the server
 	http.ListenAndServe("localhost:8000", r)

@@ -11,7 +11,7 @@ type (
 		Email                  string        `json:"email" bson:"email"`
 		RegistrationTime       string        `json:"registrationtime" bson:"registrationtime"`
 		EmailConfirmationToken string        `json:"emailconfirmationtoken" bson:"emailconfirmationtoken"`
-		UserAccountStatus      string        `json:"useraccountstatusid" bson:"useraccountstatusid"`
+		UserAccountStatus      string        `json:"useraccountstatus" bson:"useraccountstatus"`
 		PwdResetToken          string        `json:"pwdresettoken" bson:"pwdresettoken"`
 		PwdResetExpire         string        `json:"pwdresetexpire" bson:"pwdresetexpire"`
 	}
@@ -28,5 +28,12 @@ type (
 		ID       bson.ObjectId `json:"id" bson:"_id"`
 		UserName string        `json:"username" bson:"username"`
 		Password string        `json:"password" bson:"password"`
+	}
+
+	//AsynchroidMailData contains structure for AsynchroidMailData
+	AsynchroidMailData struct {
+		ID          bson.ObjectId `json:"id" bson:"_id"`
+		SenderEmail string        `json:"senderemail" bson:"senderemail"`
+		Password    string        `json:"password" bson:"password"`
 	}
 )
