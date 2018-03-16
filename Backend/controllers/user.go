@@ -186,3 +186,19 @@ func (uc UserController) ConfirmPasswordResetToken(w http.ResponseWriter, r *htt
 		}
 	}
 }
+
+//ForgetResetPassword resets password if password is forgotten
+func (uc UserController) ForgetResetPassword(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
+	newPwd := r.URL.Query().Get("newPwd")
+	username := r.URL.Query().Get("username")
+	query := bson.M{"username": username}
+	set := bson.M{"$set": bson.M{"password": buisnesslogic.HashAndSalt([]byte(newPwd))}}
+
+	if err := uc.session.DB("asynchroid").C("userdetails").Update(query, set); err != nil {
+		w.WriteHeader(404)
+		return
+	}
+
+	fmt.Fprintf(w, "Success")
+	//fmt.Fprintf(w, "%s", uj)
+}
