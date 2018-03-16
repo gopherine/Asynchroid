@@ -17,6 +17,7 @@ import './Navbar.css';
 import { Switch, Route } from 'react-router-dom';
 import LandingPage from '../LandingPage/LandingPage';
 import Auth from '../Auth/Auth';
+import Signup from '../../components/Authentication/Signup';
 import ErrorPage from '../../_error';
 import Footer from '../../components/shared/Footer';
 
@@ -113,6 +114,7 @@ class Navbar extends React.Component {
           <Switch>
             <Route exact path="/" component={LandingPage}/>
             <Route exact path="/auth" component={Auth}/>
+            <Route exact path="/auth/signup" component={Signup}/>
             <Route component={ErrorPage}/>
           </Switch>
         </main>

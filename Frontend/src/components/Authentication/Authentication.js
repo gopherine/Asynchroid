@@ -74,9 +74,11 @@ const Authentication =(props)=> {
                 LOG IN
             </Button>
             <a className="loginForgot" href="/">Forgot your password</a>
+            <a className="loginForgot" href="/">Sign up</a>
             </div>
         </div>
         </MuiThemeProvider>
+        
         </div>
     )
 }
