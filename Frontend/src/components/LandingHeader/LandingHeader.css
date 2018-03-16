@@ -47,6 +47,17 @@
   color:#eee
 }
 
+.headertext{
+  font-family: 'Megrim', cursive;
+  font-size:400%;
+  color:#333333;
+}
+
+.headertextsub{
+  font-size:100%;
+  color:#333333;
+}
+
 .info{
   width:100%;
   padding-top:2%;
@@ -54,9 +65,7 @@
   text-shadow:0 2px 3px rgba(0,0,0,0.2)
 }
 
-.info h4{
-  font-size:0.7em
-}
+
 @keyframes grow{
   0% { transform:scale(1)}
   50% { transform:scale(1.2)}
@@ -75,4 +84,93 @@
 .freelanceicons{
     text-align: center;
     font-size:100px;
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+  .header{
+    position:relative;
+    overflow:hidden;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    align-content: flex-start;
+    height:50vw;
+    min-height:400px;
+    max-height:550px;
+    min-width:300px;
+    color:#eee;
+  
+  }
+  .header:after{
+    content:"";
+    width:100%;
+    height:40%;
+    position:absolute;
+    bottom:0;
+    left:0;
+    z-index:-1;
+   background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(27,32,48,1) 100%);
+  }
+  .header:before{
+    content:"";
+    width:100%;
+    height:100%;
+    position:absolute;
+    top:0;
+    left:0;
+    backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      -webkit-transform: translateZ(0) scale(1, 1);
+      transform: translateZ(0);
+    background:#1B2030 url(../../assets/header.png) top center no-repeat;
+    background-size:110vw;
+    background-position-y: 0vh;
+    background-position-x: 2.5vw;
+    background-attachment:fixed;
+    animation: grow 60s  linear 10ms infinite;
+    transition:all 0.2s ease-in-out;
+    z-index:-2
+  }
+  .header a{
+    color:#eee
+  }
+
+  .headertext{
+    font-family: 'Megrim', cursive;
+    font-size:300%;
+    color:#333333;
+  }
+  
+  .headertextsub{
+    font-size:100%;
+    color:#333333;
+  }
+  .info{
+    width:100%;
+    padding-top:2%;
+    text-align:center;
+    text-shadow:0 2px 3px rgba(0,0,0,0.2)
+  }
+  
+ 
+  @keyframes grow{
+    0% { transform:scale(1)}
+    50% { transform:scale(1.2)}
+  }
+  .content{  
+    padding:5% 10%;
+    text-align:justify;
+    font-size:20px;
+    font-family: 'Raleway', sans-serif;
+  }
+  
+  .contentHeader{
+    text-align: center;
+  }
+  
+  .freelanceicons{
+      text-align: center;
+      font-size:100px;
+  }
 }

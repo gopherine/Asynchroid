@@ -16,8 +16,8 @@ const LandingHeader= (props) =>{
         <div style={{marginBottom:100}}>
             <div className="header">
                 <div className="info">
-                    <h1 style={{  fontFamily: "'Megrim', cursive",fontSize:"400%",color:"#333333"}}>ASYNCHROID</h1>
-                    <h4 style={{fontSize:"100%",color:"#333333"}}>LEARN. GAIN. SHARE</h4>
+                    <h1 className="headertext">ASYNCHROID</h1>
+                    <h4 className="headertextsub">LEARN. GAIN. SHARE</h4>
                 </div>
             </div>
             <section className="content">
