@@ -26,9 +26,9 @@ const theme = createMuiTheme({
     },
   });
 
-const inpgen = (type,label,minLength,icon) =>{
+const inpgen = (elementType,type,label,minLength,icon) =>{
     return {
-        elementType:"inputadormant",
+        elementType:elementType,
         elementConfig: {
             fieldType:type,
             label:label,
@@ -48,30 +48,31 @@ class Signup extends Component {
 
     state= {
         signupform:{
-            username:inpgen("text","Username",2,<MdAccountBox
+            username:inpgen("inputadormant","text","Username",2,<MdAccountBox
             style={{
             fontSize:"200%",
             color:"#747474"}}
             />),
 
-            email:inpgen("email","Email",8,<MdAccountBox
+            email:inpgen("inputadormant","email","Email",8,<MdAccountBox
             style={{
             fontSize:"200%",
             color:"#747474"}}
             />),
-            password:inpgen("password","Password",8,<MdLock
+            password:inpgen("inputadormant","password","Password",8,<MdLock
             style={{
             fontSize:"200%",
             color:"#747474"}}
             />),
-            confirmpassword:inpgen("password","Confirm Password",8,<MdAccountBox
+            confirmpassword:inpgen("inputadormantpassword","password","Confirm Password",8,<MdAccountBox
             style={{
             fontSize:"200%",
             color:"#747474"}}
             />)
         },
         formIsValid:false,
-        loading: false
+        loading: false,
+        errorMessage: null,
     }
 
     checkValidity(value,rules){
@@ -100,7 +101,6 @@ class Signup extends Component {
         updatedFormElement.valid = this.checkValidity(updatedFormElement.value, updatedFormElement.validation);
         updatedFormElement.touched = true;
         updatedSignupForm[inputIdentifier]= updatedFormElement;
-        console.log(updatedFormElement);
         let formIsValid = true;
         for (let inputIdentifier in updatedSignupForm) {
             formIsValid = updatedSignupForm[inputIdentifier].valid && formIsValid;
@@ -117,11 +117,13 @@ class Signup extends Component {
             formData[formElementIdentifier]= this.state.signupform[formElementIdentifier].value;
         }
         if(formData["password"]!==formData["confirmpassword"]){
-           
-        }
-        
-             delete formData["confirmpassword"]
-             this.setState({loading:true});
+           console.log("this is invalid")
+           this.setState({formIsValid:false,
+                        errorMessage:"Password does not match"})
+        } else{
+            this.setState({loading:true});
+            delete formData["confirmpassword"]
+        } 
         console.log(formData)
     }
 
@@ -142,6 +144,8 @@ class Signup extends Component {
                error={!formElement.config.valid}
                value={formElement.config.value}
                touched={formElement.config.touched}
+               formIsValid={this.state.formIsValid}
+               errorMessage={this.state.errorMessage}
                changed={(event)=>this.inputChangedHandler(event,formElement.id)}/>
     ))}
     <Button disabled={!this.state.formIsValid} type="submit" className="loginBtn" variant="raised">

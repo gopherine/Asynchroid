@@ -8,6 +8,7 @@ import MdLock from 'react-icons/lib/md/lock';
 import Button from 'material-ui/Button';
 import { MuiThemeProvider,createMuiTheme } from 'material-ui/styles';
 import Checkbox from 'material-ui/Checkbox';
+import { NavLink } from "react-router-dom";
 
 const theme = createMuiTheme({
     palette: {
@@ -74,7 +75,7 @@ const Authentication =(props)=> {
                 LOG IN
             </Button>
             <a className="loginForgot" href="/">Forgot your password</a>
-            <a className="loginForgot" href="/">Sign up</a>
+            <NavLink className="loginForgot" to="/auth/signup">Sign up</NavLink>
             </div>
         </div>
         </MuiThemeProvider>
