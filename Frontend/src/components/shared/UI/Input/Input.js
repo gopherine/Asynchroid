@@ -8,8 +8,9 @@ const InputField = (props) =>{
     switch (props.elementType){
         case ('inputadormant'):
             inputElement= <Input
+            error={props.error && props.touched}
             id={props.elementConfig.label}
-            type={props.elementConfig.label}
+            type={props.elementConfig.fieldType}
             onChange={props.changed}
             value={props.value}
             startAdornment={<InputAdornment position="start">

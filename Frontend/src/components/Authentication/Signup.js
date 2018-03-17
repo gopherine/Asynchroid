@@ -6,6 +6,7 @@ import MdLock from 'react-icons/lib/md/lock';
 import Button from 'material-ui/Button';
 import { MuiThemeProvider,createMuiTheme } from 'material-ui/styles';
 import Input from '../shared/UI/Input/Input';
+import { CircularProgress } from 'material-ui/Progress';
 
 const theme = createMuiTheme({
     palette: {
@@ -25,14 +26,21 @@ const theme = createMuiTheme({
     },
   });
 
-const inpgen = (label,icon) =>{
+const inpgen = (type,label,minLength,icon) =>{
     return {
         elementType:"inputadormant",
         elementConfig: {
+            fieldType:type,
             label:label,
             icon:icon,
         },
-        value : ""
+        value : "",
+        validation : {
+            required: true,
+            minLength:minLength
+        },
+        valid: false,
+        touched: false
     }
 }
 
@@ -40,29 +48,44 @@ class Signup extends Component {
 
     state= {
         signupform:{
-            username:inpgen("Username",<MdAccountBox
+            username:inpgen("text","Username",2,<MdAccountBox
             style={{
             fontSize:"200%",
             color:"#747474"}}
             />),
 
-            email:inpgen("Email",<MdAccountBox
+            email:inpgen("email","Email",8,<MdAccountBox
             style={{
             fontSize:"200%",
             color:"#747474"}}
             />),
-            password:inpgen("Password",<MdAccountBox
+            password:inpgen("password","Password",8,<MdLock
             style={{
             fontSize:"200%",
             color:"#747474"}}
             />),
-            confirmpassword:inpgen("Confirm Password",<MdAccountBox
+            confirmpassword:inpgen("password","Confirm Password",8,<MdAccountBox
             style={{
             fontSize:"200%",
             color:"#747474"}}
             />)
         },
+        formIsValid:false,
         loading: false
+    }
+
+    checkValidity(value,rules){
+        let isValid = false;
+
+        if(rules.required){
+            isValid = value.trim() !== '';
+        }
+
+        if(rules.minLength){
+            isValid = value.length >= rules.minLength && isValid;
+        }
+
+        return isValid;
     }
 
     inputChangedHandler=(event, inputIdentifier)=>{
@@ -73,10 +96,33 @@ class Signup extends Component {
         const updatedFormElement = {
             ...updatedSignupForm[inputIdentifier]
         };
-
         updatedFormElement.value = event.target.value;
+        updatedFormElement.valid = this.checkValidity(updatedFormElement.value, updatedFormElement.validation);
+        updatedFormElement.touched = true;
         updatedSignupForm[inputIdentifier]= updatedFormElement;
-        this.setState({signupform: updatedSignupForm})
+        console.log(updatedFormElement);
+        let formIsValid = true;
+        for (let inputIdentifier in updatedSignupForm) {
+            formIsValid = updatedSignupForm[inputIdentifier].valid && formIsValid;
+        }
+        this.setState({signupform: updatedSignupForm,
+        formIsValid: formIsValid})
+    }
+
+    signupHandler = (event) => {
+        event.preventDefault();
+       
+        const formData = {};
+        for (let formElementIdentifier in this.state.signupform){
+            formData[formElementIdentifier]= this.state.signupform[formElementIdentifier].value;
+        }
+        if(formData["password"]!==formData["confirmpassword"]){
+           
+        }
+        
+             delete formData["confirmpassword"]
+             this.setState({loading:true});
+        console.log(formData)
     }
 
     render(){
@@ -88,6 +134,24 @@ class Signup extends Component {
         });
     }
 
+    let form=   <form onSubmit={this.signupHandler}>
+    {formElementsArray.map(formElement => (
+        <Input key={formElement.id}
+               elementType={formElement.config.elementType}
+               elementConfig={formElement.config.elementConfig}
+               error={!formElement.config.valid}
+               value={formElement.config.value}
+               touched={formElement.config.touched}
+               changed={(event)=>this.inputChangedHandler(event,formElement.id)}/>
+    ))}
+    <Button disabled={!this.state.formIsValid} type="submit" className="loginBtn" variant="raised">
+        Register
+    </Button>
+    </form>
+
+    if(this.state.loading){
+        form=<div style={{display:"block",textAlign:"center"}}><CircularProgress size={200}/></div>
+    }
     return (
         <div style={{borderTop: "5px solid #6EA176"}}>
         <MuiThemeProvider theme={theme}>
@@ -96,17 +160,7 @@ class Signup extends Component {
             <p className="h1">ASYNCHROID</p>
             <p className="h5">LEARN. GAIN. SHARE</p>
             <div className="loginFormContainer">
-           
-            {formElementsArray.map(formElement => (
-                <Input key={formElement.id}
-                       elementType={formElement.config.elementType}
-                       elementConfig={formElement.config.elementConfig}
-                       value={formElement.config.value}
-                       changed={(event)=>this.inputChangedHandler(formElement.id)}/>
-            ))}
-            <Button className="loginBtn" variant="raised">
-                Register
-            </Button>
+                {form}
             </div>
         </div>
         </MuiThemeProvider>
