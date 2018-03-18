@@ -33,6 +33,8 @@ func main() {
 	// Get a user resource
 	r.GET("/user/:id", uc.GetUser)
 
+	r.GET("/confirm/email/token", uc.ConfirmUserIsValid)
+
 	r.POST("/user", uc.CreateUser)
 
 	r.DELETE("/user/:id", uc.RemoveUser)

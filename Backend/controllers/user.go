@@ -65,6 +65,8 @@ func (uc UserController) CreateUser(w http.ResponseWriter, r *http.Request, p ht
 	u.Password = buisnesslogic.HashAndSalt([]byte(u.Password))
 	u.RegistrationTime = buisnesslogic.GenerateUTCTime()
 	u.UserAccountStatus = "invalid"
+	u.Token = buisnesslogic.GetToken(20)
+	u.TokenExpire = time.Now().UTC().Add(time.Minute * time.Duration(15)).String()
 	// Write the user to mongo
 	err := uc.session.DB("asynchroid").C("userdetails").Insert(u)
 	if err != nil {
@@ -79,6 +81,14 @@ func (uc UserController) CreateUser(w http.ResponseWriter, r *http.Request, p ht
 
 	// Marshal provided interface into JSON structure
 	uj, _ := json.Marshal(u)
+	// Sends Email
+	s := models.AsynchroidMailData{}
+	if err := uc.session.DB("asynchroid").C("asynchroidmail").Find(bson.M{}).One(&s); err != nil {
+		w.WriteHeader(404)
+		return
+	}
+	URL := "http://localhost/password/reset/token?token=" + u.Token + "&username=" + u.UserName
+	utilities.SendMail(s.SenderEmail, []string{u.Email}, "User Email Confirmation", u.UserName, URL, "../Backend/utilities/ConfirmEmail.html")
 
 	// Write content-type, statuscode, payload
 	w.Header().Set("Content-Type", "application/json")
@@ -148,8 +158,8 @@ func (uc UserController) ForgetUserPasswordToken(w http.ResponseWriter, r *http.
 	updatequery := bson.M{"username": u.UserName}
 
 	expireTime := time.Now().UTC().Add(time.Minute * time.Duration(15)).String()
-	expireToken := buisnesslogic.GetPwdResetToken(20)
-	set := bson.M{"$set": bson.M{"pwdresettoken": expireToken, "pwdresetexpire": expireTime}}
+	expireToken := buisnesslogic.GetToken(20)
+	set := bson.M{"$set": bson.M{"Token": expireToken, "TokenExpire": expireTime}}
 	if err := uc.session.DB("asynchroid").C("userdetails").Update(updatequery, set); err != nil {
 		w.WriteHeader(404)
 		return
@@ -172,10 +182,10 @@ func (uc UserController) ConfirmPasswordResetToken(w http.ResponseWriter, r *htt
 		w.WriteHeader(404)
 		return
 	}
-	if u.PwdResetToken == token {
+	if u.Token == token {
 		layout := "2006-01-02 15:04:05 -0700 MST"
 		currentTime := time.Now().UTC()
-		time, _ := time.Parse(layout, u.PwdResetExpire)
+		time, _ := time.Parse(layout, u.TokenExpire)
 
 		diff := time.Sub(currentTime)
 		if diff > 0 {
@@ -201,4 +211,37 @@ func (uc UserController) ForgetResetPassword(w http.ResponseWriter, r *http.Requ
 
 	fmt.Fprintf(w, "Success")
 	//fmt.Fprintf(w, "%s", uj)
+}
+
+//ConfirmUserIsValid confirms the email and updates user status
+func (uc UserController) ConfirmUserIsValid(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
+	u := models.UserAuth{}
+	username := r.URL.Query().Get("username")
+	token := r.URL.Query().Get("token")
+
+	query := bson.M{"username": username}
+	if err := uc.session.DB("asynchroid").C("userdetails").Find(query).One(&u); err != nil {
+		w.WriteHeader(404)
+		return
+	}
+	if u.Token == token {
+		layout := "2006-01-02 15:04:05 -0700 MST"
+		currentTime := time.Now().UTC()
+		time, _ := time.Parse(layout, u.TokenExpire)
+
+		diff := time.Sub(currentTime)
+		if diff > 0 {
+			uj, _ := json.Marshal(u)
+			set := bson.M{"$set": bson.M{"useracccountstatus": "valid"}}
+			if err := uc.session.DB("asynchroid").C("userdetails").Update(query, set); err != nil {
+				w.WriteHeader(404)
+				return
+			}
+			fmt.Fprintf(w, "%s", uj)
+		} else {
+			fmt.Fprintf(w, "token expired")
+		}
+		w.WriteHeader(200)
+		fmt.Fprintf(w, "Email Confirmed Successfully")
+	}
 }

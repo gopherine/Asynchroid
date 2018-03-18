@@ -63,8 +63,8 @@ func RandomInt(min, max int) int {
 	return min + rand.Intn(max-min)
 }
 
-// GetPwdResetToken Generate a random string of A-Z chars with len = l
-func GetPwdResetToken(len int) string {
+// GetToken Generate a random string of A-Z chars with len = l
+func GetToken(len int) string {
 	bytes := make([]byte, len)
 	for i := 0; i < len; i++ {
 		bytes[i] = byte(RandomInt(65, 90))
