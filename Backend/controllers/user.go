@@ -6,6 +6,7 @@ import (
 	"Asynchroid/Backend/utilities"
 	"encoding/json"
 	"fmt"
+	"log"
 	"net/http"
 	"time"
 
@@ -83,12 +84,11 @@ func (uc UserController) CreateUser(w http.ResponseWriter, r *http.Request, p ht
 	uj, _ := json.Marshal(u)
 	// Sends Email
 	s := models.AsynchroidMailData{}
-	if err := uc.session.DB("asynchroid").C("asynchroidmail").Find(bson.M{}).One(&s); err != nil {
-		w.WriteHeader(404)
-		return
+	if err := uc.session.DB("asynchroid").C("asynchroidmail").Find(bson.M{"sendername": "asynchronal"}).One(&s); err != nil {
+		log.Fatal("some error")
 	}
 	URL := "http://localhost/password/reset/token?token=" + u.Token + "&username=" + u.UserName
-	utilities.SendMail(s.SenderEmail, []string{u.Email}, "User Email Confirmation", u.UserName, URL, "../Backend/utilities/ConfirmEmail.html")
+	utilities.SendMail(u.UserName, URL, "../Backend/utilities/ConfirmEmail", s.SenderEmail, u.Email, "Email Confirmation Mail", s.SenderName, s.Password)
 
 	// Write content-type, statuscode, payload
 	w.Header().Set("Content-Type", "application/json")
@@ -166,7 +166,7 @@ func (uc UserController) ForgetUserPasswordToken(w http.ResponseWriter, r *http.
 	}
 
 	URL := "http://localhost/password/reset/token?token=" + expireToken + "&username=" + u.UserName
-	utilities.SendMail(s.SenderEmail, []string{u.Email}, "Password Reset Confirmation", u.UserName, URL, "../Backend/utilities/ResetPassword.html")
+	utilities.SendMail(u.UserName, URL, "../Backend/utilities/resetPassword", s.SenderEmail, u.Email, "Password Reset Confirmation Mail", s.SenderName, s.Password)
 	fmt.Fprintf(w, u.UserName)
 	fmt.Fprintf(w, u.Email)
 }

@@ -48,5 +48,5 @@ func main() {
 	r.GET("/password/reset/confirmed", uc.ForgetResetPassword)
 
 	// Fire up the server
-	http.ListenAndServe("localhost:8000", r)
+	http.ListenAndServe("localhost:5000", r)
 }

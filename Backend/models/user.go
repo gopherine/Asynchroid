@@ -34,6 +34,7 @@ type (
 	AsynchroidMailData struct {
 		ID          bson.ObjectId `json:"id" bson:"_id"`
 		SenderEmail string        `json:"senderemail" bson:"senderemail"`
+		SenderName  string        `json:"sendername" bson:"sendername"`
 		Password    string        `json:"password" bson:"password"`
 	}
 )
