@@ -232,7 +232,7 @@ func (uc UserController) ConfirmUserIsValid(w http.ResponseWriter, r *http.Reque
 		diff := time.Sub(currentTime)
 		if diff > 0 {
 			uj, _ := json.Marshal(u)
-			set := bson.M{"$set": bson.M{"useracccountstatus": "valid"}}
+			set := bson.M{"$set": bson.M{"useraccountstatus": "valid"}}
 			if err := uc.session.DB("asynchroid").C("userdetails").Update(query, set); err != nil {
 				w.WriteHeader(404)
 				return
@@ -240,6 +240,7 @@ func (uc UserController) ConfirmUserIsValid(w http.ResponseWriter, r *http.Reque
 			fmt.Fprintf(w, "%s", uj)
 		} else {
 			fmt.Fprintf(w, "token expired")
+			return
 		}
 		w.WriteHeader(200)
 		fmt.Fprintf(w, "Email Confirmed Successfully")
