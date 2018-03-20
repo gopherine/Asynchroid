@@ -20,6 +20,8 @@ import Auth from '../Auth/Auth';
 import Signup from '../../components/Authentication/Signup';
 import ErrorPage from '../../_error';
 import Footer from '../../components/shared/Footer';
+import BlogHome from '../Blog/BlogHome';
+import BlogPost from '../Blog/BlogPost';
 
 const drawerWidth = 240;
 const marginLeft=-24;
@@ -115,6 +117,8 @@ class Navbar extends React.Component {
             <Route exact path="/" component={LandingPage}/>
             <Route exact path="/auth" component={Auth}/>
             <Route exact path="/auth/signup" component={Signup}/>
+            <Route path="/blog/overview/:page" component={BlogHome} />
+            <Route path="/blog/post/:slug" component={BlogPost} />
             <Route component={ErrorPage}/>
           </Switch>
         </main>
