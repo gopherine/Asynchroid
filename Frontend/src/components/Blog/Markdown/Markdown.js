@@ -1,12 +1,12 @@
 import React from "react";
-import ReactMarkdown from "react-markdown";
 import MdAddCircleOutline from "react-icons/lib/md/add-circle-outline";
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import { Container, Row, Col } from 'reactstrap';
 import "./Markdown.css";
+let marked = require("marked");
 
 const Markdown= (props) =>{
-    const input = `# This is a header\n\nAnd this is a paragraph`
+    const input = `# This is a header <a href="#">Hello World</a> And this is a paragraph`
     return (
         <Container>
             <Row>
@@ -31,7 +31,8 @@ const Markdown= (props) =>{
                 </Col>
             </Row>
             <hr/>
-            <ReactMarkdown source={props.input}/>
+            <div dangerouslySetInnerHTML = {{__html:marked(props.input)}}>
+            </div>
             </Container>
     )
 }
