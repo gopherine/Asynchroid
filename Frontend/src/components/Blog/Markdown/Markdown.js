@@ -1,15 +1,38 @@
 import React from "react";
 import ReactMarkdown from "react-markdown";
+import MdAddCircleOutline from "react-icons/lib/md/add-circle-outline";
+import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Container, Row, Col } from 'reactstrap';
+import "./Markdown.css";
 
 const Markdown= (props) =>{
-    const input = '# This is a header\n\nAnd this is a paragraph'
+    const input = `# This is a header\n\nAnd this is a paragraph`
     return (
-        <div className="container-fluid">
-            <h1>
-                This is markdown
-            </h1>
-            <ReactMarkdown source={input}/>
-        </div>
+        <Container>
+            <Row>
+                <Col  sm={{ size: 'auto', offset: 0 }}><MdAddCircleOutline className="addIconTitle"/>
+                </Col>
+                <Col ><div contentEditable="true" onInput={props.onChange("title")} className="input-lg"></div></Col>
+            </Row>
+
+            <Row>
+                <Col  sm={{ size: 'auto', offset: 0 }}><MdAddCircleOutline className="addIconTitle"/></Col>
+                <Col ><div contentEditable="true" 
+                onInput={props.onChange("body")} 
+                className="input-textarea"></div></Col>
+            </Row>
+            <Row>
+                <Col>
+                <Input style={{width:"50%",marginTop:20}} name="file" placeholder="Image URL" />
+                <FormText color="muted">
+                    Please copy an image URL here preferrably from imgur to add an image at the top 
+                    of your blog post
+                </FormText>
+                </Col>
+            </Row>
+            <hr/>
+            <ReactMarkdown source={props.input}/>
+            </Container>
     )
 }
 
