@@ -3,13 +3,14 @@ import MdAddCircleOutline from "react-icons/lib/md/add-circle-outline";
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import { Container, Row, Col } from 'reactstrap';
 import "./Markdown.css";
+import Editor from "./Editor/Editor";
 let marked = require("marked");
 
 const Markdown= (props) =>{
     const input = `# This is a header <a href="#">Hello World</a> And this is a paragraph`
     return (
         <Container>
-            <Row>
+            {/* <Row>
                 <Col  sm={{ size: 'auto', offset: 0 }}><MdAddCircleOutline className="addIconTitle"/>
                 </Col>
                 <Col ><div contentEditable="true" onInput={props.onChange("title")} className="input-lg"></div></Col>
@@ -29,10 +30,12 @@ const Markdown= (props) =>{
                     of your blog post
                 </FormText>
                 </Col>
-            </Row>
+            </Row> */}
+               <Editor/>
             <hr/>
-            <div dangerouslySetInnerHTML = {{__html:marked(props.input)}}>
-            </div>
+                {/* <div dangerouslySetInnerHTML = {{__html:marked(props.input)}}> */}
+            {/* </div> */}
+         
             </Container>
     )
 }
