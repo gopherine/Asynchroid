@@ -1,43 +1,46 @@
 import React, { Component } from 'react';
-import { EditorState } from 'draft-js';
-import Editor from 'draft-js-plugins-editor';
-import createEmojiPlugin from 'draft-js-emoji-plugin';
+
+import Editor, { createEditorStateWithText } from 'draft-js-plugins-editor';
+
 import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
-import 'draft-js-emoji-plugin/lib/plugin.css'
+import editorStyles from './editorStyles.css';
+import buttonStyles from './buttonStyles.css';
+import toolbarStyles from './toolbarStyles.css';
 
-const emojiPlugin = createEmojiPlugin();
-const inlineToolbarPlugin = createInlineToolbarPlugin();
-
+const inlineToolbarPlugin = createInlineToolbarPlugin({
+  theme: { buttonStyles, toolbarStyles }
+});
 const { InlineToolbar } = inlineToolbarPlugin;
-const { EmojiSuggestions } = emojiPlugin;
+const plugins = [inlineToolbarPlugin];
+const text = 'In this editor a toolbar with a lot more options shows up once you select part of the text …';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      editorState: EditorState.createEmpty(),
-    }
-  }
+export default class ThemedInlineToolbarEditor extends Component {
+
+  state = {
+    editorState: createEditorStateWithText(text),
+  };
 
   onChange = (editorState) => {
     this.setState({
       editorState,
     });
-  }
+  };
+
+  focus = () => {
+    this.editor.focus();
+  };
 
   render() {
     return (
-      <div>
+      <div className={editorStyles.editor} onClick={this.focus}>
         <Editor
           editorState={this.state.editorState}
           onChange={this.onChange}
-          plugins={[emojiPlugin, inlineToolbarPlugin]}
+          plugins={plugins}
+          ref={(element) => { this.editor = element; }}
         />
-        <EmojiSuggestions />
         <InlineToolbar />
       </div>
     );
   }
 }
-
-export default App;
