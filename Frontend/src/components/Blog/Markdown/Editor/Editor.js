@@ -4,6 +4,7 @@ import Editor from 'draft-js-plugins-editor';
 import createEmojiPlugin from 'draft-js-emoji-plugin';
 import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
 import 'draft-js-emoji-plugin/lib/plugin.css'
+import 'draft-js-inline-toolbar-plugin/lib/plugin.css';
 
 const emojiPlugin = createEmojiPlugin();
 const inlineToolbarPlugin = createInlineToolbarPlugin();
